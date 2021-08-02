@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 
-const index = () => {
+const ClientPage = () => {
   const router = useRouter()
   const loadProjectHandler = () => {
     router.push('/clients/max/sfd')
@@ -13,4 +13,4 @@ const index = () => {
   )
 }
 
-export default index
+export default ClientPage
