@@ -27,5 +27,6 @@ export async function getStaticProps(context) {
     props: {
       product: [{ id: 'p1', name: 'hello' }],
     },
+    revalidate: 10,
   }
 }
