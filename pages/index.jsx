@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-const HomePage = () => {
+const HomePage = (props) => {
   return (
     <div>
       <h1>Hello World</h1>
@@ -12,9 +12,20 @@ const HomePage = () => {
         <li>
           <Link href='/clients'>Client</Link>
         </li>
+        {props.product.map((prod) => (
+          <l1 key={prod.id}>{prod.name}</l1>
+        ))}
       </ul>
     </div>
   )
 }
 
 export default HomePage
+
+export async function getStaticProps(context) {
+  return {
+    props: {
+      product: [{ id: 'p1', name: 'hello' }],
+    },
+  }
+}
