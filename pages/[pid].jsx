@@ -1,14 +1,18 @@
-const ProductDetailsPage = () => {
-  return <div></div>
+const ProductDetailsPage = (props) => {
+  if (!props.title) {
+    return <p>Loading...</p>
+  }
+  return <h1>{props.title}</h1>
 }
 
 export default ProductDetailsPage
 
 export async function getStaticProps(context) {
+  console.log('pid regenerating')
   const { params } = context
   const productId = params.pid
   return {
-    props: {},
+    props: { title: 'Title for ' + productId },
   }
 }
 
@@ -19,6 +23,6 @@ export const getStaticPaths = async () => {
       { params: { pid: 'p2' } },
       { params: { pid: 'p3' } },
     ],
-    fallback: false,
+    fallback: true,
   }
 }

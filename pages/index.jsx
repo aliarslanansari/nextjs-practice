@@ -13,7 +13,9 @@ const HomePage = (props) => {
           <Link href='/clients'>Client</Link>
         </li>
         {props.product.map((prod) => (
-          <l1 key={prod.id}>{prod.name}</l1>
+          <Link key={prod.id} href={`/${prod.id}`}>
+            {prod.name}
+          </Link>
         ))}
       </ul>
     </div>
@@ -25,12 +27,17 @@ export default HomePage
 export async function getStaticProps(context) {
   return {
     props: {
-      product: [{ id: 'p1', name: 'hello' }],
+      product: [
+        { id: 'p1', name: 'hello p1' },
+        { id: 'p2', name: 'hello p2' },
+        { id: 'p3', name: 'hello p2' },
+        { id: 'p4', name: 'hello p4' },
+      ],
     },
-    redirect: {
-      destination: '/nodata',
-    },
-    notFound: false,
+    // redirect: {
+    //   destination: '/nodata',
+    // },
+    // notFound: false,
     revalidate: 10,
   }
 }
