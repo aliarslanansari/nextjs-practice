@@ -11,6 +11,11 @@ export async function getStaticProps(context) {
   console.log('pid regenerating')
   const { params } = context
   const productId = params.pid
+  if (productId > 'p5') {
+    return {
+      notFound: true,
+    }
+  }
   return {
     props: { title: 'Title for ' + productId },
   }
