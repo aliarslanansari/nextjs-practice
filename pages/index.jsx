@@ -27,6 +27,10 @@ export async function getStaticProps(context) {
     props: {
       product: [{ id: 'p1', name: 'hello' }],
     },
+    redirect: {
+      destination: '/nodata',
+    },
+    notFound: false,
     revalidate: 10,
   }
 }
