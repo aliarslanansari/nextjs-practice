@@ -7,27 +7,35 @@ const ProductDetailsPage = (props) => {
 
 export default ProductDetailsPage
 
-export async function getStaticProps(context) {
-  console.log('pid regenerating')
-  const { params } = context
-  const productId = params.pid
-  if (productId > 'p5') {
-    return {
-      notFound: true,
-    }
-  }
-  return {
-    props: { title: 'Title for ' + productId },
-  }
-}
+// export async function getStaticProps(context) {
+//   console.log('pid regenerating')
+//   const { params } = context
+//   const productId = params.pid
+//   if (productId > 'p5') {
+//     return {
+//       notFound: true,
+//     }
+//   }
+//   return {
+//     props: { title: 'Title for ' + productId },
+//   }
+// }
 
-export const getStaticPaths = async () => {
+// export const getStaticPaths = async () => {
+//   return {
+//     paths: [
+//       { params: { pid: 'p1' } },
+//       { params: { pid: 'p2' } },
+//       { params: { pid: 'p3' } },
+//     ],
+//     fallback: true,
+//   }
+// }
+
+export const getServerSideProps = async (context) => {
+  const { params, res, req } = context
+  console.log({ params })
   return {
-    paths: [
-      { params: { pid: 'p1' } },
-      { params: { pid: 'p2' } },
-      { params: { pid: 'p3' } },
-    ],
-    fallback: true,
+    props: { title: 'Max' },
   }
 }
